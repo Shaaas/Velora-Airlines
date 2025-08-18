@@ -62,3 +62,36 @@ footer a:hover { color:#fff; }
 
 @media(max-width:900px){ .flight-form{grid-template-columns:1fr 1fr;} .card{width:45%;} }
 @media(max-width:600px){ .flight-form{grid-template-columns:1fr;} .card{width:90%;} h1{font-size:2.2rem;} h2{font-size:2rem;} }
+
+/* CAROUSEL */
+.carousel { position:relative; overflow:hidden; max-width:1000px; margin:2rem auto; }
+.carousel-track { display:flex; transition:transform 0.5s ease-in-out; }
+.carousel-item { min-width:250px; margin:0 1rem; background:#fff; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); text-align:center; }
+.carousel-item img { width:100%; border-radius:15px 15px 0 0; }
+.carousel-item p { padding:1rem; font-weight:bold; color:#d4af37; }
+.carousel-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); border:none; color:#fff; font-size:2rem; padding:0.5rem 1rem; cursor:pointer; border-radius:50%; transition:0.3s; }
+.carousel-btn:hover { background:#d4af37; color:#0a1f2d; }
+.carousel-btn.prev { left:10px; }
+.carousel-btn.next { right:10px; }
+
+/* SPECIAL OFFERS SLIDER */
+.offers-slider 
+{ display:flex; overflow-x:auto; gap:1rem; padding:1rem 0; scroll-behavior:smooth; }
+.offer-card { min-width:220px; background:#fff; border-radius:15px; padding:1rem; box-shadow:0 5px 20px rgba(0,0,0,0.1); text-align:center; transition:0.3s; }
+.offer-card:hover { transform:scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+.offer-card h3 { color:#d4af37; margin-bottom:0.5rem; }
+
+/* LOYALTY PROGRAM */
+.loyalty-cards { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; }
+.loyalty-card { background:#fff; padding:2rem; border-radius:15px; width:250px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition:0.3s; text-align:center; }
+.loyalty-card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+.loyalty-card h3 { color:#d4af37; margin-bottom:1rem; }
+.loyalty-card p { font-size:0.95rem; }
+
+
+
+
+
+
+
+
