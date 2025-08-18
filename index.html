@@ -4,61 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Velora Airlines</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-  <style>
-    /* === BASE STYLES === */
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: 'Lato', sans-serif; color:#2b2b2b; background:#f5f1eb; line-height:1.6; overflow-x:hidden; }
-    a { text-decoration:none; color:inherit; }
-
-    /* === HERO SECTION === */
-    .hero { position:relative; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; overflow:hidden; }
-    .hero video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1; filter: brightness(0.7); }
-    .hero h1 { font-family:'Montserrat', sans-serif; font-size:3rem; color:#fff; margin-bottom:1rem; animation:fadeIn 2s ease forwards; }
-    .hero p { font-size:1.2rem; color:#fff; margin-bottom:2rem; animation:fadeIn 3s ease forwards; }
-    .hero button { padding:0.8rem 2rem; font-size:1.2rem; border:none; background:linear-gradient(45deg,#d4af37,#0a1f2d); color:#fff; cursor:pointer; border-radius:8px; transition:0.3s; }
-    .hero button:hover { transform:scale(1.05); box-shadow:0 0 20px rgba(212,175,55,0.7); }
-
-    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
-
-    /* === FLIGHT BOOKING SECTION === */
-    .flight-booking { background:rgba(255,255,255,0.95); padding:3rem 2rem; margin-top:-5vh; border-radius:15px; width:90%; max-width:1200px; margin-left:auto; margin-right:auto; box-shadow:0 5px 25px rgba(0,0,0,0.1); }
-    .tabs { display:flex; justify-content:center; margin-bottom:1.5rem; }
-    .tab { padding:0.7rem 1.5rem; cursor:pointer; border-bottom:2px solid transparent; transition:0.3s; font-weight:bold; }
-    .tab.active { border-bottom:2px solid #d4af37; color:#0a1f2d; }
-    .flight-form { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:1rem; align-items:end; flex-wrap:wrap; }
-    .flight-form input, .flight-form select { padding:0.7rem 1rem; border-radius:8px; border:1px solid #ccc; width:100%; font-size:1rem; }
-    .flight-form button { grid-column:span 4; padding:0.8rem; font-size:1.2rem; border:none; background:linear-gradient(45deg,#d4af37,#0a1f2d); color:#fff; border-radius:8px; cursor:pointer; transition:0.3s; }
-    .flight-form button:hover { transform:scale(1.05); box-shadow:0 0 15px rgba(212,175,55,0.7); position:relative; }
-
-    /* === SECTIONS === */
-    section { padding:5rem 2rem; text-align:center; }
-    h2 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:2rem; color:#0a1f2d; }
-    .cards { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
-    .card { background:#fff; padding:2rem; border-radius:15px; width:250px; box-shadow:0 5px 20px rgba(0,0,0,0.1); transition:0.3s; }
-    .card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
-    .card h3 { margin-bottom:1rem; color:#d4af37; }
-    .card p { font-size:0.95rem; }
-
-    /* === DESTINATIONS MAP === */
-    .map { position:relative; width:90%; max-width:1200px; margin:auto; border-radius:15px; overflow:hidden; box-shadow:0 5px 25px rgba(0,0,0,0.1); }
-    .map img { width:100%; display:block; }
-    .city-marker { position:absolute; width:20px; height:20px; background:#d4af37; border-radius:50%; cursor:pointer; animation:floatMarker 2s ease-in-out infinite alternate; }
-    @keyframes floatMarker { 0%{transform:translateY(0);} 100%{transform:translateY(-5px);} }
-
-    /* === TESTIMONIALS === */
-    .testimonial { background:#0a1f2d; color:#fff; padding:3rem 2rem; border-radius:15px; margin:2rem auto; max-width:800px; box-shadow:0 5px 25px rgba(0,0,0,0.2); }
-    .testimonial p { font-style:italic; margin-bottom:1rem; }
-    .testimonial h4 { font-weight:bold; color:#d4af37; }
-
-    /* === FOOTER === */
-    footer { background:#0a1f2d; color:#fff; padding:2rem; display:flex; justify-content:space-between; flex-wrap:wrap; }
-    footer a { color:#d4af37; margin-right:1rem; transition:0.3s; }
-    footer a:hover { color:#fff; }
-
-    @media(max-width:900px){ .flight-form { grid-template-columns:1fr 1fr; } .card { width:45%; } }
-    @media(max-width:600px){ .flight-form { grid-template-columns:1fr; } .card { width:90%; } h1 { font-size:2.2rem; } h2 { font-size:2rem; } }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -67,7 +13,8 @@
     <video src="https://www.w3schools.com/howto/rain.mp4" autoplay muted loop></video>
     <h1>Fly Beyond. Fly Velora.</h1>
     <p>Experience luxury, speed, and comfort in every journey.</p>
-    <button onclick="document.getElementById('flight-section').scrollIntoView({behavior:'smooth'});">Book Your Flight</button>
+    <button onclick="scrollToFlight()">Book Your Flight</button>
+    <div class="plane"></div>
   </div>
 
   <!-- FLIGHT BOOKING -->
@@ -96,26 +43,25 @@
     </form>
   </div>
 
+  <!-- MODAL FOR FLIGHTS -->
+  <div class="modal" id="flightModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Available Flights</h2>
+      <p>Flight 101 - 09:00 AM - $350</p>
+      <p>Flight 202 - 12:30 PM - $420</p>
+      <p>Flight 303 - 06:45 PM - $500</p>
+    </div>
+  </div>
+
   <!-- WHY VELORA -->
   <section>
     <h2>Why Fly Velora?</h2>
     <div class="cards">
-      <div class="card">
-        <h3>Comfort</h3>
-        <p>Spacious seating and ergonomic design for the ultimate travel comfort.</p>
-      </div>
-      <div class="card">
-        <h3>Luxury</h3>
-        <p>Experience elegance at every step from check-in to arrival.</p>
-      </div>
-      <div class="card">
-        <h3>Speed</h3>
-        <p>Efficient routes and timely departures to get you there faster.</p>
-      </div>
-      <div class="card">
-        <h3>Sustainability</h3>
-        <p>Eco-friendly practices and modern aircraft for responsible travel.</p>
-      </div>
+      <div class="card"><h3>Comfort</h3><p>Spacious seating and ergonomic design for the ultimate travel comfort.</p></div>
+      <div class="card"><h3>Luxury</h3><p>Experience elegance at every step from check-in to arrival.</p></div>
+      <div class="card"><h3>Speed</h3><p>Efficient routes and timely departures to get you there faster.</p></div>
+      <div class="card"><h3>Sustainability</h3><p>Eco-friendly practices and modern aircraft for responsible travel.</p></div>
     </div>
   </section>
 
@@ -124,23 +70,17 @@
     <h2>Our Destinations</h2>
     <div class="map">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="World Map">
-      <div class="city-marker" style="top:40%; left:45%;" title="New York"></div>
-      <div class="city-marker" style="top:35%; left:65%;" title="London"></div>
-      <div class="city-marker" style="top:50%; left:80%;" title="Tokyo"></div>
+      <div class="city-marker" style="top:40%; left:45%;" title="New York" onclick="showCity('New York')"></div>
+      <div class="city-marker" style="top:35%; left:65%;" title="London" onclick="showCity('London')"></div>
+      <div class="city-marker" style="top:50%; left:80%;" title="Tokyo" onclick="showCity('Tokyo')"></div>
     </div>
   </section>
 
   <!-- TESTIMONIALS -->
   <section>
     <h2>What Our Passengers Say</h2>
-    <div class="testimonial">
-      <p>"Velora made my first-class experience unforgettable. Luxurious and seamless from start to finish!"</p>
-      <h4>- Amelia R.</h4>
-    </div>
-    <div class="testimonial">
-      <p>"Flights were on time, staff were incredible, and the view from above? Magical!"</p>
-      <h4>- Marcus L.</h4>
-    </div>
+    <div class="testimonial"><p>"Velora made my first-class experience unforgettable. Luxurious and seamless from start to finish!"</p><h4>- Amelia R.</h4></div>
+    <div class="testimonial"><p>"Flights were on time, staff were incredible, and the view from above? Magical!"</p><h4>- Marcus L.</h4></div>
   </section>
 
   <!-- FOOTER -->
@@ -153,19 +93,6 @@
     </div>
   </footer>
 
-  <!-- JS -->
-  <script>
-    // Tab Switcher
-    function switchTab(tab){
-      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-      tab.classList.add('active');
-    }
-
-    // Flight Form Submission (Demo)
-    document.getElementById('flightForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      alert('Searching flights... ✈️');
-    });
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
