@@ -1,176 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Velora Airlines</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velora Airlines | Beyond the Stars</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-  <!-- HERO SECTION -->
-  <div class="hero">
-    <video src="https://www.w3schools.com/howto/rain.mp4" autoplay muted loop></video>
-    <h1>Fly Beyond. Fly Velora.</h1>
-    <p>Experience luxury, speed, and comfort in every journey.</p>
-    <button onclick="scrollToFlight()">Book Your Flight</button>
-    <div class="plane"></div>
-  </div>
+    <div class="stars"></div>
 
-  <!-- FLIGHT BOOKING -->
-  <div class="flight-booking" id="flight-section">
-    <div class="tabs">
-      <div class="tab active" onclick="switchTab(this)">One-Way</div>
-      <div class="tab" onclick="switchTab(this)">Round-Trip</div>
-      <div class="tab" onclick="switchTab(this)">Multi-City</div>
-    </div>
-    <form class="flight-form" id="flightForm">
-      <input type="text" placeholder="From" required>
-      <input type="text" placeholder="To" required>
-      <input type="date" placeholder="Departure" required>
-      <input type="date" placeholder="Return" required>
-      <select>
-        <option>1 Adult</option>
-        <option>2 Adults</option>
-        <option>3 Adults</option>
-      </select>
-      <select>
-        <option>Economy</option>
-        <option>Business</option>
-        <option>First Class</option>
-      </select>
-      <button type="submit">Search Flights ✈️</button>
-    </form>
-  </div>
+    <nav class="glass-nav">
+        <div class="logo">VELORA<span>AIR</span></div>
+        <ul class="nav-links">
+            <li><a href="#booking">Book</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#tracker">Live Tracker</a></li>
+            <li><a href="#innovations">Innovations</a></li>
+            <li><button class="prime-btn">Member Login</button></li>
+        </ul>
+    </nav>
 
-  <!-- MODAL FOR FLIGHTS -->
-  <div class="modal" id="flightModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Available Flights</h2>
-      <p>Flight 101 - 09:00 AM - $350</p>
-      <p>Flight 202 - 12:30 PM - $420</p>
-      <p>Flight 303 - 06:45 PM - $500</p>
-    </div>
-  </div>
+    <header class="hero">
+        <video src="https://www.w3schools.com/howto/rain.mp4" autoplay muted loop class="hero-video"></video>
+        <div class="hero-overlay">
+            <h1 class="glitch" data-text="TRANSCEND TRAVEL">TRANSCEND TRAVEL</h1>
+            <p>Your journey beyond the ordinary begins with Velora.</p>
+            <a href="#booking" class="cta-scroll">Initiate Propulsion <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </header>
 
-  <!-- WHY VELORA -->
-  <section>
-    <h2>Why Fly Velora?</h2>
-    <div class="cards">
-      <div class="card"><h3>Comfort</h3><p>Spacious seating and ergonomic design for the ultimate travel comfort.</p></div>
-      <div class="card"><h3>Luxury</h3><p>Experience elegance at every step from check-in to arrival.</p></div>
-      <div class="card"><h3>Speed</h3><p>Efficient routes and timely departures to get you there faster.</p></div>
-      <div class="card"><h3>Sustainability</h3><p>Eco-friendly practices and modern aircraft for responsible travel.</p></div>
-    </div>
-  </section>
+    <section id="booking" class="section reveal">
+        <span class="subtitle">Secure Your Passage</span>
+        <h2>Interstellar Manifest</h2>
+        <div class="booking-container glass">
+            <div class="booking-tabs">
+                <button class="tab active" onclick="switchTab(this)">Standard Class</button>
+                <button class="tab" onclick="switchTab(this)">Quantum Private</button>
+            </div>
+            <form id="flightForm" class="grid-form">
+                <input type="text" placeholder="Origin Anomaly (e.g., Earth-Sol-3)" required>
+                <input type="text" placeholder="Destination Quadrant" required>
+                <input type="date" required>
+                <select>
+                    <option>Business Class (Holographic Suite)</option>
+                    <option>First Class (Gravity Pod)</option>
+                    <option>Economy (Eco-Comfort)</option>
+                </select>
+                <button type="button" onclick="openModal()" class="search-btn">Scan Availability</button>
+            </form>
+        </div>
+    </section>
 
-  <!-- DESTINATIONS MAP -->
-  <section>
-    <h2>Our Destinations</h2>
-    <div class="map">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="World Map">
-      <div class="city-marker" style="top:40%; left:45%;" title="New York" onclick="showCity('New York')"></div>
-      <div class="city-marker" style="top:35%; left:65%;" title="London" onclick="showCity('London')"></div>
-      <div class="city-marker" style="top:50%; left:80%;" title="Tokyo" onclick="showCity('Tokyo')"></div>
-    </div>
-  </section>
-  <!-- IN-FLIGHT EXPERIENCE CAROUSEL -->
-<!-- IN-FLIGHT EXPERIENCE CAROUSEL -->
-<section id="inflight">
-  <h2>In-Flight Experience</h2>
-  <div class="carousel">
-    <div class="carousel-track">
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1582719478176-5f1391be1b45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHNlYXRzfGVufDB8fHx8MTY5MjQ5NzMxNw&ixlib=rb-4.0.3&q=80&w=400" alt="Seats">
-        <p>Luxury Seats</p>
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1608164802110-3292c04c2a38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Meals">
-        <p>Gourmet Meals</p>
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1521510895919-1b2f3b9f2e38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Entertainment">
-        <p>Entertainment</p>
-      </div>
-      <div class="carousel-item">
-        <img src="https://images.unsplash.com/photo-1596495577886-0d3b0d4f28b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Amenities">
-        <p>Premium Amenities</p>
-      </div>
-    </div>
-    <button class="carousel-btn prev">&#10094;</button>
-    <button class="carousel-btn next">&#10095;</button>
-  </div>
-</section>
+    <section id="tracker" class="section reveal">
+        <span class="subtitle">Real-time Data Stream</span>
+        <h2>Orbital Flight Status</h2>
+        <div class="tracker-card glass">
+            <input type="text" id="flightInput" placeholder="Enter Flight ID (e.g., VA-X101)">
+            <button onclick="trackFlight()"><i class="fas fa-satellite-dish"></i> Locate Craft</button>
+            <div id="trackerOutput" class="output-area"></div>
+        </div>
+    </section>
 
-<!-- SPECIAL OFFERS SLIDER -->
-<section id="offers">
-  <h2>Hot Deals & Offers</h2>
-  <div class="offers-slider">
-    <div class="offer-card">
-      <img src="https://images.unsplash.com/photo-1563201515-fd7f1a6f99cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="New York">
-      <h3>Summer Special</h3>
-      <p>New York - $299</p>
-    </div>
-    <div class="offer-card">
-      <img src="https://images.unsplash.com/photo-1508898578281-774ac4893a9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="London">
-      <h3>Europe Adventure</h3>
-      <p>London - $349</p>
-    </div>
-    <div class="offer-card">
-      <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Tokyo">
-      <h3>Asia Escape</h3>
-      <p>Tokyo - $399</p>
-    </div>
-    <div class="offer-card">
-      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Paris">
-      <h3>Romantic Getaway</h3>
-      <p>Paris - $359</p>
-    </div>
-  </div>
-</section>
+    <section id="flight-map" class="section reveal">
+        <span class="subtitle">Global Network</span>
+        <h2>Velora Planetary Paths</h2>
+        <div class="map-container glass">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="Global Map" class="world-map">
+            <div id="flight-path-overlay"></div>
+        </div>
+    </section>
 
+    <section id="experience" class="section reveal">
+        <span class="subtitle">Premium Innovation</span>
+        <h2>Business Class 2.0: The Genesis</h2>
+        <div class="feature-grid">
+            <div class="feat-card glass reveal">
+                <div class="icon"><i class="fas fa-bed"></i></div>
+                <h3>Zero-G Pods</h3>
+                <p>Fully adaptive sleep pods for ultimate rejuvenation in transit.</p>
+            </div>
+            <div class="feat-card glass reveal">
+                <div class="icon"><i class="fas fa-eye"></i></div>
+                <h3>AR-Enhanced Windows</h3>
+                <p>Digital panoramas of celestial bodies and real-time flight data overlays.</p>
+            </div>
+            <div class="feat-card glass reveal">
+                <div class="icon"><i class="fas fa-utensils"></i></div>
+                <h3>Synthesized Dining</h3>
+                <p>Personalized molecular gastronomy, tailored to your biological profile.</p>
+            </div>
+            <div class="feat-card glass reveal">
+                <div class="icon"><i class="fas fa-brain"></i></div>
+                <h3>Neural Interface</h3>
+                <p>Control your environment and entertainment with thought commands.</p>
+            </div>
+        </div>
+    </section>
 
-<!-- LOYALTY PROGRAM / REWARDS -->
-<section id="loyalty">
-  <h2>Velora Loyalty Rewards</h2>
-  <div class="loyalty-cards">
-    <div class="loyalty-card">
-      <h3>Silver</h3>
-      <p>0-10,000 points</p>
-      <p>Priority Check-In + Lounge Access</p>
-    </div>
-    <div class="loyalty-card">
-      <h3>Gold</h3>
-      <p>10,001-25,000 points</p>
-      <p>Extra Baggage + Seat Upgrade</p>
-    </div>
-    <div class="loyalty-card">
-      <h3>Platinum</h3>
-      <p>25,001+ points</p>
-      <p>First-Class Upgrade + VIP Services</p>
-    </div>
-  </div>
-</section>
+    <section id="innovations" class="section reveal">
+        <span class="subtitle">Velora Quantum Leap</span>
+        <h2>Future Innovations & R&D</h2>
+        <div class="innovation-grid">
+            <div class="innovation-card glass reveal">
+                <h3><i class="fas fa-robot"></i> AI Co-Pilot Assistance</h3>
+                <p>Personalized AI companion for travel planning and in-flight needs.</p>
+            </div>
+            <div class="innovation-card glass reveal">
+                <h3><i class="fas fa-atom"></i> Temporal Displacement Units</h3>
+                <p>Experimental tech reducing travel time through localized spacetime manipulation.</p>
+            </div>
+            <div class="innovation-card glass reveal">
+                <h3><i class="fas fa-shield-alt"></i> Adaptive Hull Shielding</h3>
+                <p>Next-gen exterior for enhanced protection against cosmic phenomena.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section reveal">
+        <span class="subtitle">Voyager Feedback</span>
+        <h2>What Our Pioneers Say</h2>
+        <div class="testimonial-slider-container glass">
+            <div class="testimonial-track">
+                <div class="testimonial-card">
+                    <p>"Velora's Zero-G pods are revolutionary! Best sleep I've ever had on a transit."</p>
+                    <h4>- Commander R. Kael</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The AR windows made my journey through the Andromeda nebula unforgettable!"</p>
+                    <h4>- Dr. Elara Vance</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Flawless AI integration. It felt like my ship anticipated every need."</p>
+                    <h4>- Senator J. Thorne</h4>
+                </div>
+            </div>
+            <button class="prev-test btn-nav"><i class="fas fa-chevron-left"></i></button>
+            <button class="next-test btn-nav"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
 
 
-  <!-- TESTIMONIALS -->
-  <section>
-    <h2>What Our Passengers Say</h2>
-    <div class="testimonial"><p>"Velora made my first-class experience unforgettable. Luxurious and seamless from start to finish!"</p><h4>- Amelia R.</h4></div>
-    <div class="testimonial"><p>"Flights were on time, staff were incredible, and the view from above? Magical!"</p><h4>- Marcus L.</h4></div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div>Velora Airlines © 2025</div>
-    <div>
-      <a href="#">Facebook</a>
-      <a href="#">Instagram</a>
-      <a href="#">Twitter</a>
+    <div id="flightModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Select Your Deployment Pod</h2>
+            <div class="seat-grid">
+                <div class="seat available">1A</div>
+                <div class="seat taken">1B</div>
+                <div class="seat available">1C</div>
+                <div class="seat available">2A</div>
+                <div class="seat taken">2B</div>
+                <div class="seat available">2C</div>
+            </div>
+            <button class="search-btn" onclick="alert('Pod Reserved')">Confirm Selection</button>
+        </div>
     </div>
-  </footer>
 
-<script src="script.js"></script>
+    <footer>
+        <p>&copy; 2026 VELORA INDUSTRIES | INTERSTELLAR TRAVEL DIVISION</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
